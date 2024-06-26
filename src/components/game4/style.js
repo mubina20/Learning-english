@@ -15,6 +15,9 @@ export const GameTitle = styled.h1`
 export const QuestionContainer = styled.div`
   margin-bottom: 20px;
   font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 `;
 
 export const InputContainer = styled.div`
@@ -50,4 +53,10 @@ export const ResultContainer = styled.div`
   p {
     margin-bottom: 10px;
   }
+`;
+
+export const AudioIcon = styled.img`
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 `;

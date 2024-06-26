@@ -13,7 +13,7 @@ export const GamePage = styled.div`
 export const MemoryCardsContainer = styled.div`
     margin-top: 40px;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 10px;
 `
 
