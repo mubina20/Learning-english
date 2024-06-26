@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import cover from '../../images/cover.jpg'
-import { MemoryCardBack, MemoryCardFront, MemoryCardsContainer, MemoryCardWord, MemoryGamePage } from './style'
+import { GamePage, MemoryCardsContainer } from './style'
 import SingleCard from './singleCard'
 
 const englishWords = [
@@ -87,7 +86,7 @@ function MemoryGame() {
     }
 
     return (
-        <MemoryGamePage>
+        <GamePage>
             <button onClick={shuffleWords}>Start Game</button>
             <MemoryCardsContainer>
                 {cards.map(card => (
@@ -100,7 +99,7 @@ function MemoryGame() {
                 ))}
             </MemoryCardsContainer>
             <p>Turns: {turns}</p>
-        </MemoryGamePage>
+        </GamePage>
     )
 }
 

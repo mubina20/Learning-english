@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, MemoryCardBack, MemoryCardFront, MemoryCardWord } from './style'
+import { Card, MemoryCardBack, MemoryCardFront } from './style'
 import cover from '../../images/cover.jpg'
 
 function SingleCard({ card, handleChoice, flipped }) {
@@ -12,7 +12,7 @@ function SingleCard({ card, handleChoice, flipped }) {
     return (
         <Card>
             <div className={flipped ? "flipped" : ""}>
-                <MemoryCardFront className='front'><MemoryCardWord>{card.word}</MemoryCardWord></MemoryCardFront>
+                <MemoryCardFront className='front'><span>{card.word}</span></MemoryCardFront>
                 <MemoryCardBack className='back' src={cover} onClick={handleClick}/>
             </div>
         </Card>

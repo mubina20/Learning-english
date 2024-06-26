@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const MemoryGamePage = styled.div`
+export const GamePage = styled.div`
     width: 100%;
     min-height: 100vh;
     background: #000;
@@ -48,9 +48,4 @@ export const MemoryCardBack = styled.img`
     cursor: pointer;
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
-`
-
-
-export const MemoryCardWord = styled.div`
-
 `
