@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const GamePage = styled.div`
     width: 100%;
     min-height: 100vh;
-    background: #000;
+    /* background: #000; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -49,3 +49,22 @@ export const MemoryCardBack = styled.img`
     transition: all ease-in 0.2s;
     transition-delay: 0.2s;
 `
+
+export const Timer = styled.div`
+    font-size: 2rem;
+    margin: 10px;
+`;
+
+export const ResultContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+`;
+
+export const Button = styled.button`
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin-top: 10px;
+    cursor: pointer;
+`;
