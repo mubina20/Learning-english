@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppContainer, GameContainer, GameTitle, Item, ItemList, Target, Button, ResultContainer, GamePage } from './style';
+import { AppContainer, GameContainer, GameTitle, Item, ItemList, Target, Button, ResultContainer, GamePage, TargetTop, TargetBottom } from './style';
 
 import catAudio from '../../audio/cat.mp3';
 import chickAudio from '../../audio/chick.mp3';
@@ -129,8 +129,22 @@ const Game3 = () => {
                             isOver={target.isOver}
                         >
                             { target.item 
-                                ? <div><span>{target.item.name}</span> <span>{target.name}</span> </div>
-                                : target.name
+                                ? <div>
+                                    <TargetTop>
+                                        {target.item.name}
+                                        <AudioIcon 
+                                            src={audioIcon} 
+                                            onClick={() => handleAudioPlay(target.item.audio)} 
+                                        />
+                                    </TargetTop> 
+                                    <TargetBottom>
+                                        {target.name}
+                                    </TargetBottom> 
+                                </div>
+                                : <div>
+                                    <TargetTop></TargetTop>
+                                    <TargetBottom>{target.name}</TargetBottom>
+                                </div> 
                             }
                         </Target>
                     ))}

@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { Card, MemoryCardBack, MemoryCardFront } from './style';
-import cover from '../../images/cover.jpg';
 import audioIcon from '../../audio/audio-icon.png';
 import { AudioIcon } from '../game4/style';
+import cardImg from '../../images/card.jpg';
+
 
 function SingleCard({ card, handleChoice, flipped, matched }) {
 
@@ -34,7 +35,7 @@ function SingleCard({ card, handleChoice, flipped, matched }) {
                         <AudioIcon src={audioIcon} alt="Play audio" onClick={handleAudioPlay} />
                     )}
                 </MemoryCardFront>
-                <MemoryCardBack className='back' src={cover} onClick={handleClick} />
+                <MemoryCardBack className='back' src={cardImg} onClick={handleClick} />
             </div>
         </Card>
     );
