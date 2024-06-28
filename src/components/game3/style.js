@@ -6,9 +6,6 @@ export const GamePage = styled.div`
     min-height: 100vh;
 
     background-image: url('https://png.pngtree.com/background/20210714/original/pngtree-school-recognition-board-background-picture-image_1193504.jpg');
-
-    /* background-image: url('https://static.vecteezy.com/system/resources/previews/024/625/681/non_2x/cute-little-penguin-and-friends-social-media-story-free-vector.jpg'); */
-
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
