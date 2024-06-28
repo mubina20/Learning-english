@@ -1,22 +1,14 @@
 import styled from 'styled-components';
 
-
-// Styled components
 export const GamePage = styled.div`
     width: 100%;
     height: 100%;
     min-height: 100vh;
-
-    /* background-image: url('https://assets.nintendo.com/image/upload/ar_16:9,c_lpad,w_1240/b_white/f_auto/q_auto/ncom/software/switch/70010000065414/980d6eae58e0b62c05152ac9866ed82406ead4e138a732d125e1966e1c05353e'); */
-
-    /* background-image: url('https://previews.123rf.com/images/blueringmedia/blueringmedia1510/blueringmedia151000335/45866296-girl-and-boy-by-the-wooden-frame-illustration.jpg'); */
-
     background-image: url('https://t3.ftcdn.net/jpg/04/54/10/76/360_F_454107697_1rV7cwwNSp58RjXXEz3h6UPqViNvRiWD.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 `;
 

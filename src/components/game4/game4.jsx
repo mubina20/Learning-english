@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AppContainer, GameTitle, QuestionContainer, InputContainer, Button, ResultContainer, AudioIcon } from './style';
+import { AppContainer, GameTitle, QuestionContainer, InputContainer, Button, ResultContainer, AudioIcon, GamePage, EnglishWord, GameTitle2, GameOver, GameResult, Back } from './style';
 
 import catAudio from '../../audio/cat.mp3';
 import chickAudio from '../../audio/chick.mp3';
@@ -12,6 +12,7 @@ import goatAudio from '../../audio/goat.mp3';
 import pigAudio from '../../audio/pig.mp3';
 import restAudio from '../../audio/rest.mp3';
 import audioIcon from '../../audio/audio-icon.png';
+import { useNavigate } from 'react-router-dom';
 
 const words = [
   { korean: '고양이', english: 'Cat', sound: catAudio },
@@ -31,7 +32,11 @@ function Game5() {
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
   const [result, setResult] = useState(null);
+  const [correctCount, setCorrectCount] = useState(0);
+  const [incorrectCount, setIncorrectCount] = useState(0);
   const [currentAudio, setCurrentAudio] = useState(null); 
+  const [gameCompleted, setGameCompleted] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (gameStarted) {
@@ -62,9 +67,11 @@ function Game5() {
     const userAnswerNormalized = userAnswer.trim();
 
     if (userAnswerNormalized === correctAnswer) {
-      setResult('Correct!');
+      setResult('잘했어요!');
+      setCorrectCount(correctCount + 1);
     } else {
-      setResult(`Incorrect! The correct answer is ${correctAnswer}`);
+      setResult(`틀렸어요!... '${correctAnswer}' 입니다`);
+      setIncorrectCount(incorrectCount + 1);
     }
   };
 
@@ -72,29 +79,43 @@ function Game5() {
     setResult(null);
     setUserAnswer('');
     if (currentWordIndex < words.length - 1) {
-      setCurrentWordIndex(currentWordIndex + 1);
+      setCurrentWordIndex(currentWordIndex + 1)
     } else {
-      alert('You have completed the game!');
-      setCurrentWordIndex(0);
+      setGameCompleted(true);
     }
   };
 
   const startGame = () => {
     setGameStarted(true);
+    setGameCompleted(false);
+    setCurrentWordIndex(0);
+    setCorrectCount(0);
+    setIncorrectCount(0);
     playCurrentWordSound();
   };
 
+  const goBack = () => {
+    navigate(-1); 
+};
+
   return (
-    <AppContainer>
+    <GamePage>
       <GameTitle>Korean-English Spelling Matching</GameTitle>
+      <GameTitle2>With Masha</GameTitle2>
+      
       {!gameStarted ? (
-        <Button onClick={startGame}>게임 시작</Button>
+        <Button style={{marginTop: '80px'}} onClick={startGame}>게임 시작</Button>
+      ) : gameCompleted ? (
+        <ResultContainer>
+          <GameOver>게임 완료!</GameOver>
+          <GameResult>맞은 개수: {correctCount}</GameResult>
+          <GameResult>틀린 개수: {incorrectCount}</GameResult>
+          <Button style={{marginTop: '20px'}} onClick={startGame}>다시 시작</Button>
+        </ResultContainer>
       ) : (
         <>
           <QuestionContainer>
-            <p>
-              Translate to Korean: <strong>{words[currentWordIndex].english}</strong>
-            </p>
+              한국어로 번역해보세요: <EnglishWord>{words[currentWordIndex].english}</EnglishWord>
             <AudioIcon src={audioIcon} alt="" onClick={playWordSoundAgain} /> 
           </QuestionContainer>
           <InputContainer>
@@ -109,7 +130,8 @@ function Game5() {
           )}
         </>
       )}
-    </AppContainer>
+      <Back onClick={goBack}>이전 페이지</Back>
+    </GamePage>
   );
 }
 
