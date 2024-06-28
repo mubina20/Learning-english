@@ -4,12 +4,17 @@ export const GamePage = styled.div`
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    background-image: url('https://t3.ftcdn.net/jpg/04/54/10/76/360_F_454107697_1rV7cwwNSp58RjXXEz3h6UPqViNvRiWD.jpg');
+
+    background-image: url('https://png.pngtree.com/background/20210714/original/pngtree-school-recognition-board-background-picture-image_1193504.jpg');
+
+    /* background-image: url('https://static.vecteezy.com/system/resources/previews/024/625/681/non_2x/cute-little-penguin-and-friends-social-media-story-free-vector.jpg'); */
+
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
+    user-select: none;
 `;
 
 export const GameTitle = styled.h1`
@@ -61,6 +66,7 @@ export const Target = styled.div`
     justify-content: center;
     text-align: center;
     opacity: ${props => (props.isOver ? 0.5 : 1)};
+    box-shadow: inset 0 0 8px #b5b2b2;
 `;
 
 export const TargetTop = styled.div`
@@ -111,4 +117,37 @@ export const ResultContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 10px;
+`;
+
+export const ResultContainerTop = styled.div`
+    width: 200px;
+    height: 90px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* gap: -30px; */
+    background: #007bff;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    color: #fff;
+
+    p{
+        margin: 5px;
+    }
+`;
+
+export const Back = styled.button`
+    position: absolute;
+    width: 100px;
+    padding: 10px 10px;
+    background: #f9568c;
+    cursor: pointer;
+    border-radius: 10px;
+    color: #fff;
+    border: none;
+    bottom: 20px;
+    left: 20px;
 `;

@@ -95,8 +95,8 @@ function Game5() {
   };
 
   const goBack = () => {
-    navigate(-1); 
-};
+      navigate(-1); 
+  };
 
   return (
     <GamePage>
@@ -121,11 +121,11 @@ function Game5() {
           <InputContainer>
             <input type="text" value={userAnswer} onChange={handleInputChange} />
           </InputContainer>
-          <Button onClick={checkAnswer}>Check Answer</Button>
+          <Button onClick={checkAnswer}>답 검사</Button>
           {result && (
             <ResultContainer>
               <p>{result}</p>
-              <Button onClick={nextQuestion}>Next</Button>
+              <Button onClick={nextQuestion}>다음</Button>
             </ResultContainer>
           )}
         </>

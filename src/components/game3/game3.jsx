@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AppContainer, GameContainer, GameTitle, Item, ItemList, Target, Button, ResultContainer, GamePage, TargetTop, TargetBottom } from './style';
+import { AppContainer, GameContainer, GameTitle, Item, ItemList, Target, Button, ResultContainer, GamePage, TargetTop, TargetBottom, ResultContainerTop, Back } from './style';
+import { shuffle } from 'lodash';
 
 import catAudio from '../../audio/cat.mp3';
 import chickAudio from '../../audio/chick.mp3';
@@ -13,6 +14,7 @@ import pigAudio from '../../audio/pig.mp3';
 import restAudio from '../../audio/rest.mp3';
 import audioIcon from '../../audio/audio-icon.png';
 import { AudioIcon } from '../game4/style';
+import { useNavigate } from 'react-router-dom';
 
 const items = [
     { id: 1, name: 'cat', audio: catAudio },
@@ -42,10 +44,12 @@ const targets = [
 
 const Game3 = () => {
     const [draggingItem, setDraggingItem] = useState(null);
-    const [dropTargets, setDropTargets] = useState(targets.map(target => ({ ...target, item: null })));
+    const [dropTargets, setDropTargets] = useState(shuffle(targets.map(target => ({ ...target, item: null, isCorrect: null }))));
+    const [shuffledItems, setShuffledItems] = useState(shuffle(items));  
     const [showResult, setShowResult] = useState(false);
     const [correctCount, setCorrectCount] = useState(0);
     const [incorrectCount, setIncorrectCount] = useState(0);
+    const navigate = useNavigate();
 
     const handleDragStart = (item) => {
         setDraggingItem(item);
@@ -64,6 +68,7 @@ const Game3 = () => {
                 t.id === target.id ? { ...t, item: draggingItem, isOver: false } : t
             )
         );
+        setShuffledItems(prevItems => prevItems.filter(item => item.id !== draggingItem.id));
         setDraggingItem(null);
     };
 
@@ -78,15 +83,20 @@ const Game3 = () => {
             let correct = 0;
             let incorrect = 0;
 
-            dropTargets.forEach(target => {
+            const newDropTargets = dropTargets.map(target => {
                 const matchedItem = items.find(item => item.name === target.item?.name);
-                if (matchedItem && target.name === targets.find(t => t.id === matchedItem.id)?.name) {
+                const isCorrect = matchedItem && target.name === targets.find(t => t.id === matchedItem.id)?.name;
+                
+                if (isCorrect) {
                     correct++;
                 } else {
                     incorrect++;
                 }
+
+                return { ...target, isCorrect };
             });
 
+            setDropTargets(newDropTargets);
             setCorrectCount(correct);
             setIncorrectCount(incorrect);
             setShowResult(true);
@@ -94,10 +104,15 @@ const Game3 = () => {
     }, [dropTargets]);
 
     const resetGame = () => {
-        setDropTargets(targets.map(target => ({ ...target, item: null })));
+        setDropTargets(shuffle(targets.map(target => ({ ...target, item: null, isCorrect: null }))));
+        setShuffledItems(shuffle(items));  // 게임을 리셋할 때 items 배열도 다시 섞음
         setShowResult(false);
         setCorrectCount(0);
         setIncorrectCount(0);
+    };
+
+    const goBack = () => {
+        navigate(-1); 
     };
 
     return (
@@ -105,7 +120,7 @@ const Game3 = () => {
             <GameTitle>Matching Game</GameTitle>
             <GameContainer>
                 <ItemList>
-                    {items.map(item => (
+                    {shuffledItems.map(item => (  // 섞인 items 배열을 사용
                         <Item
                             key={item.id}
                             draggable
@@ -127,6 +142,10 @@ const Game3 = () => {
                             onDragOver={(e) => handleDragOver(e, target)}
                             onDrop={() => handleDrop(target)}
                             isOver={target.isOver}
+                            style={{
+                                backgroundColor: target.isCorrect === false ? '#f75555' : '#fff',
+                                color: target.isCorrect === false ? '#fff' : '#000'
+                            }}
                         >
                             { target.item 
                                 ? <div>
@@ -152,11 +171,14 @@ const Game3 = () => {
             </GameContainer>
             {showResult && (
                 <ResultContainer>
-                    <p>Correct: {correctCount}</p>
-                    <p>Incorrect: {incorrectCount}</p>
+                    <ResultContainerTop>
+                        <p>맞은 개수: {correctCount}</p>
+                        <p>틀린 개수: {incorrectCount}</p>
+                    </ResultContainerTop>
                     <Button onClick={resetGame}>Reset Game</Button>
                 </ResultContainer>
             )}
+            <Back onClick={goBack}>이전 페이지</Back>
         </GamePage>
     );
 };
