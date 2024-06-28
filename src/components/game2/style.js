@@ -8,6 +8,7 @@ export const GameContainer = styled.div`
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    user-select: none;
 `;
 
 export const BallsContainer = styled.div`

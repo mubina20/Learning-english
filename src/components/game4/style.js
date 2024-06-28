@@ -11,6 +11,7 @@ export const GamePage = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  user-select: none;
 `;
 
 export const GameTitle = styled.h1`

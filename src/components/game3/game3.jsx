@@ -105,7 +105,7 @@ const Game3 = () => {
 
     const resetGame = () => {
         setDropTargets(shuffle(targets.map(target => ({ ...target, item: null, isCorrect: null }))));
-        setShuffledItems(shuffle(items));  // 게임을 리셋할 때 items 배열도 다시 섞음
+        setShuffledItems(shuffle(items));  
         setShowResult(false);
         setCorrectCount(0);
         setIncorrectCount(0);
@@ -119,23 +119,25 @@ const Game3 = () => {
         <GamePage>
             <GameTitle>Matching Game</GameTitle>
             <GameContainer>
-                <ItemList>
-                    {shuffledItems.map(item => (  // 섞인 items 배열을 사용
-                        <Item
-                            key={item.id}
-                            draggable
-                            onDragStart={() => handleDragStart(item)}
-                            isDragging={draggingItem && draggingItem.id === item.id}
-                        >
-                            {item.name}
-                            <AudioIcon 
-                                src={audioIcon} 
-                                onClick={() => handleAudioPlay(item.audio)} 
-                            />
-                        </Item>
-                    ))}
-                </ItemList>
-                <ItemList>
+                {!showResult && (
+                    <ItemList style={{height: '140px'}}>
+                        {shuffledItems.map(item => (
+                            <Item
+                                key={item.id}
+                                draggable
+                                onDragStart={() => handleDragStart(item)}
+                                isDragging={draggingItem && draggingItem.id === item.id}
+                            >
+                                {item.name}
+                                <AudioIcon 
+                                    src={audioIcon} 
+                                    onClick={() => handleAudioPlay(item.audio)} 
+                                />
+                            </Item>
+                        ))}
+                    </ItemList>
+                )}
+                <ItemList style={{height: '250px'}}>
                     {dropTargets.map(target => (
                         <Target
                             key={target.id}

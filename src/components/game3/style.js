@@ -4,7 +4,6 @@ export const GamePage = styled.div`
     width: 100%;
     height: 100%;
     min-height: 100vh;
-
     background-image: url('https://png.pngtree.com/background/20210714/original/pngtree-school-recognition-board-background-picture-image_1193504.jpg');
     background-repeat: no-repeat;
     background-size: cover;

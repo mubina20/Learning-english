@@ -27,7 +27,7 @@ const words = [
   { korean: '휴식', english: 'Rest', sound: restAudio }
 ];
 
-function Game5() {
+function Game4() {
   const [gameStarted, setGameStarted] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [userAnswer, setUserAnswer] = useState('');
@@ -121,7 +121,7 @@ function Game5() {
           <InputContainer>
             <input type="text" value={userAnswer} onChange={handleInputChange} />
           </InputContainer>
-          <Button onClick={checkAnswer}>답 검사</Button>
+          <Button onClick={checkAnswer}>정답</Button>
           {result && (
             <ResultContainer>
               <p>{result}</p>
@@ -135,4 +135,4 @@ function Game5() {
   );
 }
 
-export default Game5;
+export default Game4;

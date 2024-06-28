@@ -27,22 +27,22 @@ export const HomePage = styled.div`
 `;
 
 export const HomePageTitleContainer = styled.div`
-    margin-top: 30px;
+    margin-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;
 `;
 
 export const HomePageTitle = styled.div`
-    width: 800px;
-    font-size: 3rem;
+    width: 500px;
+    height: 160px;
     font-family: "Hi Melody", sans-serif;
     color: #fff;
-    font-weight: 600;
-    background: linear-gradient(45deg, #f783839e, #ed005280);
+    font-weight: 500;
+    background: linear-gradient(45deg, #cbe6f19e, #50cbef80);
     padding: 10px 20px;
-    border-radius: 13px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 100px;
+    /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -52,11 +52,13 @@ export const HomePageTitle2 = styled.div`
     width: 100%;
     padding: 5px 12px;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.7rem;
     font-family: "Hi Melody", sans-serif;
+    font-weight: 600;
     color: #fff;
-    box-shadow: inset 0 0 10px #fb0068;
-    border-radius: 5px;
+    /* box-shadow: inset 0 0 10px #fb0068; */
+    border-radius: 100px;
+    overflow: hidden;
 `;
 
 export const GamesContainer = styled.div`

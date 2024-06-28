@@ -11,12 +11,10 @@ function Home() {
         <HomePage>
             <HomePageTitleContainer>
                 <HomePageTitle>
-                    {/* <HomePageTitle style={{width: '990px'}}>단어들 다 외웠지?</HomePageTitle>
-                    <HomePageTitle>이제 게임으로 기억력 테스트 한 번 해볼까?</HomePageTitle> */}
                     <HomePageTitle2>
-                        단어들 다 외웠지?<br/>
                         이제 게임으로 기억력 테스트 한 번 해볼까?<br/>
-                        그럼 Let's go~~~!
+                        {/* Let's go~~~! */}
+                        <img src="https://data.textstudio.com/output/sample/animated/3/3/5/7/let-s-go-1-17533.gif" alt="" style={{width: '300px'}}/>
                     </HomePageTitle2>
                 </HomePageTitle>
             </HomePageTitleContainer>
